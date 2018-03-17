@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Set;
 
 
@@ -59,7 +60,7 @@ public class SongBook {
     }
 
     private Map<String, List<Song>> byArtist() {
-        Map<String, List<Song>> byArtist = new HashMap<String, List<Song>>();
+        Map<String, List<Song>> byArtist = new TreeMap<String, List<Song>>();
         for (Song song : mSongs) {
             List<Song> artistSongs = byArtist.get(song.getArtist());
             if (artistSongs == null) {
