@@ -1,13 +1,15 @@
 package com.teamtreehouse.model;
 
+
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStreamReader;;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -77,6 +79,16 @@ public class SongBook {
     }
 
     public List<Song> getSongsForArtist(String artistName) {
-        return byArtist().get(artistName);
+        List<Song> songs = byArtist().get(artistName);
+        songs.sort(new Comparator<Song>() {
+            @Override
+            public int compare(Song song1, Song song2) {
+                if (song1.equals(song2)) {
+                    return 0;
+                }
+                return song1.getTitle().compareTo(song2.getTitle());
+            }
+        });
+        return songs;
     }
 }
